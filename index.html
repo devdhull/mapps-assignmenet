@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Location Check</title>
+
+  </head>
+  <body onload="checkLocation()">
+    <script>
+      const database = [
+        { username: "Dev", password: "16x2=8" },
+        { username: "bob", password: "bob123" },
+        { username: "charlie", password: "charlie123" },
+        { username: "diana", password: "diana123" },
+        { username: "edward", password: "edward123" },
+        { username: "fiona", password: "fiona123" },
+        { username: "george", password: "george123" },
+        { username: "hannah", password: "hannah123" },
+        { username: "ian", password: "ian123" },
+        { username: "julia", password: "julia123" },
+        { username: "kevin", password: "kevin123" },
+        { username: "linda", password: "linda123" },
+      ];
+
+      function checkLocation() {
+        const location = prompt("Please enter your location:");
+
+        if (
+          location &&
+          (location.toLowerCase() === "punjab" ||
+            location.toLowerCase() === "haryana" ||
+            location.toLowerCase() === "chandigarh")
+        ) {
+          const username = prompt("please enter your username:");
+          const password = prompt("Please enter your password:");
+
+          if (isUserValid(username, password)) {
+            window.location.href =
+              "https://www.google.com/maps/place/" + location;
+          } else {
+            alert("Wrong credentials.");
+          }
+        } else {
+          alert("Access denied.");
+        }
+      }
+
+      function isUserValid(username, password) {
+        for (let i = 0; i < database.length; i++) {
+          if (
+            database[i].username === username &&
+            database[i].password === password
+          ) {
+            return true;
+          }
+        }
+        return false;
+      }
+    </script>
+  </body>
+
+</html>
